@@ -37,7 +37,7 @@
 						  });
 						});
 						</script>
-					</div>a
+					</div>
 					<div class="col-md-7 single-top-right">
 						<div class="single-para simpleCart_shelfItem">
 						<h2>Lorem Ipsum</h2>

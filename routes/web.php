@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('kayit','kayit');
-Route::view('giris','giris');
+Route::view('kayit','kayit')->middleware("kullanicioturum");
+Route::view('giris','giris')->middleware("kullanicioturum");
 Route::view('index','index');
 Route::view('contact','contact');
 Route::view('checkout','checkout');

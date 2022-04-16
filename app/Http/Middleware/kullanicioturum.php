@@ -16,6 +16,11 @@ class kullanicioturum
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+       // dd(url('giris'));
+        if(Session()->has("kull") && (url('giris')==$request->url()||url('kayit')==$request->url()))
+        {
+            return back();
+        }
+
     }
 }

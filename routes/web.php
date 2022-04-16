@@ -30,8 +30,6 @@ Route::post('kayit',[Projecontroller::class,'kullaniciekle']);
 Route::post('giris',[Projecontroller::class,'kullanicigiris'])->name("kullhome");
 Route::get('index', [Projecontroller::class, 'kullanasayfa'])->name("kullanasay");
 Route::get('kullcikis',[Projecontroller::class,'kullcikis']);
-Route::get('index',[Projecontroller::class,'liste'])->name("home");
-Route::get('single/{id}',[Projecontroller::class,'listt']);
 
 
 

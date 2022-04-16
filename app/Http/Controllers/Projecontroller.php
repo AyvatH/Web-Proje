@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Kullanici;
-use App\Models\Urunler;
 use Illuminate\Support\Facades\Session;
 
 
@@ -84,22 +83,5 @@ class Projecontroller extends Controller
                 return redirect("giris");
             }
           }
-          public function liste()
-          {
-              $bilgi=Urunler::get();
-               //dd($bilgi);
-              return view('index',compact('bilgi'));
-          }
-
-
-      public function listt($id)
-      {
-
-          $veri=$id;
-          $dataa=Urunler::whereId($veri)->first();
-
-          return view('single',compact('dataa','veri'));
-
-        }
 
 }

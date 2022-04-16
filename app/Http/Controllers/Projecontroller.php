@@ -79,7 +79,7 @@ class Projecontroller extends Controller
 
             if(Session::has("kull"))
             {
-                Session::forget("kull");
+                Session::pull("kull");
                 return redirect("giris");
             }
           }

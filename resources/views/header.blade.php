@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <p><a href="kullcikis" class="simpleCart_empty"> Çıkış Yap</a></p>
     <div class="clearfix"> </div>
 
-@endif
+@endif a
 					</div>
 				</div>
 				<div class="clearfix"></div>

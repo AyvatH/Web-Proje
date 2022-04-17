@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Projecontroller;
+use App\Models\Urunler;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,22 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $bilgi=Urunler::get();
+    // dd($bilgi);
+    return view('index',compact('bilgi'));
 });
 
 Route::view('kayit','kayit')->middleware("kullanicioturum");
 Route::view('giris','giris')->middleware("kullanicioturum");
 Route::view('index','index');
-Route::view('contact','contact');
-Route::view('checkout','checkout');
-Route::view('products','products');
-Route::view('single','single');
-Route::view('typo','typo');
+Route::view('contact','contact')->name("contact");
+Route::view('checkout','checkout')->name("checkout");
+Route::view('products','products')->name("products");
+Route::view('single','single')->name("single");
+Route::view('typo','typo')->name("typo");
 
 Route::post('kayit',[Projecontroller::class,'kullaniciekle']);
 Route::post('giris',[Projecontroller::class,'kullanicigiris'])->name("kullhome");
 Route::get('index', [Projecontroller::class, 'kullanasayfa'])->name("kullanasay");
-Route::get('kullcikis',[Projecontroller::class,'kullcikis']);
+Route::get('kullcikis',[Projecontroller::class,'kullcikis'])->name("kullcikis");
 Route::get('index',[Projecontroller::class,'liste'])->name("home");
 Route::get('single/{id}',[Projecontroller::class,'listt']);
 

@@ -11,20 +11,30 @@
 					<div class="col-md-5 single-top-left">
 						<div class="flexslider">
 							  <ul class="slides">
-								<li data-thumb="images/s-1.jpg">
-                                    <div class="thumb-image"> <img src={{asset("images/s-1.jpg")}} data-imagezoom="true" class="img-responsive" alt=""/> </div>
+
+                                    @forelse ($bilgi2 as $key2 => $val2)
+                                    <input  type="hidden" class="form-control" name="d"  {{ $akey2=$val2 ['id']}}>
+                                    <li data-thumb="{{asset("$val2->resim1")}}">
+                        @empty
+
+                        @endforelse
+
+                                   @php
+                                     //  dd($val2->resim1);
+                                   @endphp
+                                    <div class="thumb-image"> <img src="{{asset("$val2->resim1")}}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li>
-								<li data-thumb="images/s-2.jpg">
-                                    <div class="thumb-image"> <img src={{asset("images/s-2.jpg")}} data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								<li data-thumb="{{asset("$val2->resim2")}}">
+                                    <div class="thumb-image"> <img src={{asset("$val2->resim2")}} data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li>
-								<li data-thumb="images/s-3.jpg">
-                                    <div class="thumb-image"> <img src={{asset("images/s-3.jpg")}} data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								<li data-thumb="{{asset("$val2->resim3")}}">
+                                    <div class="thumb-image"> <img src={{asset("$val2->resim3")}} data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li>
 							  </ul>
 						</div>
 						<!-- FlexSlider -->
-						<script src="js/imagezoom.js"></script>
-						<script defer src="js/jquery.flexslider.js"></script>
+						<script src="{{asset("js/imagezoom.js")}}"></script>
+						<script defer src="{{asset("js/jquery.flexslider.js")}}"></script>
                         <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
 						<script>
 						// Can also be used with $(document).ready()
@@ -84,33 +94,33 @@
 				</div>
 				<div class="tabs">
 					<ul class="menu_drop">
-				<li class="item1"><a href="#"><img src="images/arrow.png" alt="">Description</a>
+				<li class="item1"><a href="#"><img src="{{asset("images/arrow.png")}}" alt="">Description</a>
 					<ul>
 						<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
 						<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
 						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
 					</ul>
 				</li>
-				<li class="item2"><a href="#"><img src="images/arrow.png" alt="">Additional information</a>
+				<li class="item2"><a href="#"><img src="{{asset("images/arrow.png")}}" alt="">Additional information</a>
 					<ul>
 					    <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
 						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
 					</ul>
 				</li>
-				<li class="item3"><a href="#"><img src="images/arrow.png" alt="">Reviews (10)</a>
+				<li class="item3"><a href="#"><img src="{{asset("images/arrow.png")}}" alt="">Reviews (10)</a>
 					<ul>
 						<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
 						<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
 						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
 					</ul>
 				</li>
-				<li class="item4"><a href="#"><img src="images/arrow.png" alt="">Helpful Links</a>
+				<li class="item4"><a href="#"><img src="{{asset("images/arrow.png")}}" alt="">Helpful Links</a>
 					<ul>
 					    <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
 						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
 					</ul>
 				</li>
-				<li class="item5"><a href="#"><img src="images/arrow.png" alt="">Make A Gift</a>
+				<li class="item5"><a href="#"><img src="{{asset("images/arrow.png")}}" alt="">Make A Gift</a>
 					<ul>
 						<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
 						<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
@@ -121,49 +131,24 @@
 				</div>
 				<div class="latestproducts">
 					<div class="product-one">
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="{{route("single")}}" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="{{route("single")}}" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="{{route("single")}}" class="mask"><img class="img-responsive zoom-img" src="images/p-3.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
+                        @forelse ($bilgi as $key => $val)
+                        <input  type="hidden" class="form-control" name="a"  {{ $akey=$val ['id']}} >
+                        <div class="col-md-3 product-left">
+                            <div class="product-main simpleCart_shelfItem">
+                                <a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{asset("images/p-1.png")}}" alt="" /></a>
+                                <div class="product-bottom">
+                                    <h3>{{  $val ['urun_adi']}}</h3>
+                                    <p>Explore Now</p>
+                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">{{  $val ['fiyat']." $"}}</span></h4>
+                                </div>
+                                <div class="srch">
+                                    <span>-50%</span>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        Veri bulunamadı
+                        @endforelse
 
 				<div class="clearfix"> </div>
 			</div>

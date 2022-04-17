@@ -16,7 +16,7 @@
 <script type="text/javascript" src="{{asset('js/memenu.js')}}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>
+<script src="{{asset('js/jquery.easydropdown.js')}}"></script>
 </head>
 <body>
 	<!--top-header-->
@@ -30,13 +30,18 @@
 				</div>
 				<div class="col-md-6 top-header-main">
 					<div class="cart box_1">
-						<a href="checkout">
+
+                             <form id="addCustomer"  class="form-group" method="GET" action="{{route("checkout")}}" >
+                                @csrf
+                                <input type="hidden" id="sepet" name="sepet" />
+						<button type="submit">
 							 <div class="total">
 								<span class="simpleCart_total"></span></div>
 								<img src="{{asset('images/cart-1.png')}}" alt="" />
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Sepeti Boşalt</a></p>
+                        </button>
+						<p><a href="javascript:;" onclick="temizle()" class="simpleCart_empty">Sepeti Boşalt</a></p>
 						<div class="clearfix"> </div>
+                             </form>
 
 					</div>
 
@@ -177,17 +182,58 @@
 		<div  id="top" class="callbacks_container">
 			<ul class="rslides" id="slider4">
 			    <li>
-					<img src="images/bnr-1.jpg" alt=""/>
+					<img src="{{asset('images/bnr-1.jpg')}}" alt=""/>
 				</li>
 				<li>
-					<img src="images/bnr-2.jpg" alt=""/>
+					<img src="{{asset('images/bnr-2.jpg')}}" alt=""/>
 				</li>
 				<li>
-					<img src="images/bnr-3.jpg" alt=""/>
+					<img src="{{asset('images/bnr-3.jpg')}}" alt=""/>
 				</li>
 			</ul>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
+    <script>
+        function temizle()
+        {
+            localStorage.removeItem("spt");
+            console.log("asd");
+            var sepet=document.getElementById('sepet');
+        sepet.value=null;
+        }
+        var dizi=[];
+        var sepet=document.getElementById('sepet');
+        sepet.value=localStorage.getItem('spt');
+        function sepet(id)
+        {
+            var sepet=document.getElementById('sepet');
+            if(localStorage.getItem('spt')==null)
+            {
+                console.log("if");
+                dizi=[];
+                dizi.push(id);
+                console.log(dizi);
+                localStorage.setItem('spt',dizi);
+
+            }
+            else
+            {
+                console.log("else");
+
+                dizi=[];
+                dizi.push(localStorage.getItem('spt'));
+                dizi.push(id);
+                console.log(dizi);
+                 localStorage.setItem('spt',dizi);
+
+            }
+
+            sepet.value=localStorage.getItem('spt');
+
+
+           console.log(localStorage.getItem('spt'));
+        }
+        </script>
 	<!--banner-ends-->
 

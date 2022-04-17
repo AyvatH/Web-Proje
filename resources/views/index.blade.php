@@ -88,11 +88,11 @@
                     <input  type="hidden" class="form-control" name="a"  {{ $akey=$val ['id']}} >
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+							<a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{asset("images/p-1.png")}}" alt="" /></a>
 							<div class="product-bottom">
 								<h3>{{  $val ['urun_adi']}}</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">{{  $val ['fiyat']." $"}}</span></h4>
+								<h4><a class="item_add" onclick="sepet('{{$val ['id']}}')" href="#" type="submit"><i></i></a> <span class=" item_price">{{  $val ['fiyat']." $"}}</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -203,7 +203,42 @@
 	</div>
 	<!--product-end-->
 	</div>--}}
-	<!--product-end--><br><br><br><br>
+	<!--product-end-->
+    <script>
+        var dizi=[];
+        function sepet(id)
+        {
+            var sepet=document.getElementById('sepet');
+            if(localStorage.getItem('spt')==null)
+            {
+                console.log("if");
+                dizi=[];
+                dizi.push(id);
+                console.log(dizi);
+                localStorage.setItem('spt',dizi);
+
+            }
+            else
+            {
+                console.log("else");
+
+                dizi=[];
+                dizi.push(localStorage.getItem('spt'));
+                dizi.push(id);
+                console.log(dizi);
+                 localStorage.setItem('spt',dizi);
+
+            }
+
+            sepet.value=localStorage.getItem('spt');
+
+
+           console.log(localStorage.getItem('spt'));
+        }
+        </script>
+    <br><br><br><br>
 @include('footer')
 </body>
 </html>
+
+

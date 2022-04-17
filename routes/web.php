@@ -35,6 +35,7 @@ Route::get('index', [Projecontroller::class, 'kullanasayfa'])->name("kullanasay"
 Route::get('kullcikis',[Projecontroller::class,'kullcikis'])->name("kullcikis");
 Route::get('index',[Projecontroller::class,'liste'])->name("home");
 Route::get('single/{id}',[Projecontroller::class,'listt']);
+Route::get('checkout',[Projecontroller::class,'urunekle'])->name("checkout");
 
 
 

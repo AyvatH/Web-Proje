@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Kullanici;
+use App\Models\sepet;
 use App\Models\Urunler;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
 
 
 
@@ -91,14 +92,53 @@ class Projecontroller extends Controller
           $veri=$id;
           $dataa=Urunler::whereId($veri)->first();
         //   dd($dataa);
-          return view('single',compact('dataa','veri'));
-
+        $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->where("urunler.id",$veri)->
+        get(["resimler.resim1","resimler.resim2","resimler.resim3"]);
+       $bilgi=Urunler::get();
+          return view('single',compact('dataa','veri',"bilgi2","bilgi"));
         }
         public function liste()
         {
             $bilgi=Urunler::get();
             // dd($bilgi);
             return view('index',compact('bilgi'));
+        }
+        public function liste6()
+        {
+            $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->get(["ogrenciler.*","resimler.resim1","resimler.resim2","resimler.resim3"]);
+
+            return view('single',compact('bilgi2'));
+        }
+        public function urunekle(Request $request)
+        {
+          // dd($request->all());
+          //select * from authors where id in( { post1.author_id }, { post2.author_id }, { post3.author_id }, { post4.author_id }, { post5.author_id } )
+         // $dataa=Urunler::whereIn("id",$request->sepet)->get();,
+        //  $a=$request->sepet;
+        //  $a[0]="1";
+        //  dd($a);
+        //  dd(gettype($request->sepet));
+        //  $request->sepet[0]="";
+        //  $request->sepet[-1]="";
+        //  dd($request->sepet);
+            $dizi1=explode(",",$request->sepet);
+            //dd($dizi1);
+
+
+        $dizi="";
+        foreach ($dizi1 as $key => $value) {
+            $dizi.="'".$value."',";
+        }
+        $dizi=substr($dizi,0,-1);
+        //dd($request->sepet);
+        $data= DB::select('select * from urunler where id in ('.$dizi.')');
+       // $users = DB::table('urunler')->whereIn('id', "$dizi")->get();
+          dd( $data);
+
+
+           return redirect('checkout',$data);
+
+
         }
 
 }

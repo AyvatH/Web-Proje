@@ -1,4 +1,5 @@
 <title>İzmir Saat</title>
+<link rel="icon" href="{{asset('images/logo.png')}}" type="image/x-icon">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="js/jquery-1.11.0.min.js"></script>
@@ -67,6 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--top-header-->
 	<!--start-logo-->
 	<div class="logo">
+        <i ><img src="{{url('images/logo.png')}}" width="75px" height="75px"></i>
 		<a href="index"><h1>İZMİR SAATLERİ</h1></a>
 	</div>
 	<!--start-logo-->

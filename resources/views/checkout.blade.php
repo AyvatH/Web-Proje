@@ -248,39 +248,43 @@
                                                                 <tbody >
 
                                                                     @forelse ($dz as $key => $val)
-                                                                    <input  type="hidden" class="form-control" name="kadd"  {{$top1=0}}{{$top2=0}}{{$top3=0}} placeholder="Kullanıcı Adı">
+                                                                    {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
 
                                                                     <tr>
                                                                         <td><img class="img-responsive zoom-img" src="{{asset("$val->resim1")}}" width="50" height="50" alt="" /></td>
                                                                         <td> {{$val->urun_adi}}</td>
                                                                         <td>
-
+                                                                            @if($val->id=="1")
                                                                            @php
-                                                                           if($val->id=="1")
-                                                                            {$top1=0;
+$top1=0;
                                                                             echo $sayac1;
-                                                                           $top1=$sayac1*$val->fiyat;}
-                                                                           else if($val->id=="2")
-                                                                          { $top2=0;
-                                                                            echo $sayac2;
-                                                                           $top2=$sayac2*$val->fiyat;}
-                                                                           else
-                                                                            {$top3=0;
-                                                                            echo $sayac3;
-                                                                           $top3=$sayac3*$val->fiyat;}
-                                                                                $toplam=0;
-                                                                                $toplam=$top1+$top2+$top3;
+                                                                           $top1=$sayac1*$val->fiyat;
+//dd($top1);
                                                                            @endphp
-
+                                                                           @elseif($val->id=="2")
+                                                                           @php
+                                                                           $top2=0;
+                                                                            echo $sayac2;
+                                                                           $top2=$sayac2*$val->fiyat;
+//dd($top2);
+                                                                           @endphp
+                                                                           @else
+                                                                           @php
+                                                                            $top3=0;
+                                                                            echo $sayac3;
+                                                                           $top3=$sayac3*$val->fiyat;
+//dd($top1);
+                                                                           @endphp
+                                                                           @endif
                                                                         </td>
                                                                         <td> {{$val->fiyat}}</td>
 
 
-                                                                        @empty
-                                                                        <tr>
-                                                                            <td colspan="4">Veri bulunamadı</td>
-                                                                        </tr>
-                                                                        @endforelse
+                                                        @empty
+                                                        <tr>
+                                                            <td colspan="4">Veri bulunamadı</td>
+                                                        </tr>
+                                                        @endforelse
 
 
                                                         </tbody>
@@ -293,12 +297,17 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td id="toplam" style="float:right;">@php
+                                                            <td style="float:right;">@php
+                                                            if(!isset($top1))
+                                                            $top1=0;
+                                                           if(!isset($top2))
+                                                            $top2=0;
+                                                           if(!isset($top3))
+                                                            $top3=0;
+                                                                $toplam=$top1+$top2+$top3;
                                                                 echo $toplam;
                                                             @endphp</td>
-
                                                         </tr>
-
                                                             </table>
                                                         </div>
                                                     </div>

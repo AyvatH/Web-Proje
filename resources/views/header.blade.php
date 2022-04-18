@@ -201,6 +201,7 @@
             console.log("asd");
             var sepet=document.getElementById('sepet');
         sepet.value=null;
+        location.href="index";
         }
         var dizi=[];
         var sepet=document.getElementById('sepet');

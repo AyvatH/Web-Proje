@@ -226,7 +226,7 @@
                                                                     {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
 
                                                                     <tr>
-                                                                        <td>{{  $val->resim1}}</td>
+                                                                        <td><img class="img-responsive zoom-img" src="{{asset("$val->resim1")}}" width="50" height="50" alt="" /></td>
 
 
                                                         @empty

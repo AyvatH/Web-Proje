@@ -58,25 +58,51 @@
 		</div>
 	</div>
 	<!--about-end-->
+    {{-- @forelse ($bilgi as $key => $val)
+    <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı">
+
+    <tr>
+        <td>{{  $val ['ad']}}</td>
+        <td>{{ $val ['soyad']}}</td>
+         <td>{{ $val ["no"]}}</td>
+        <td>
+            <a href="{{url("onayla/".$akey)}}" type="submit" class="label theme-bg text-white f-12">Düzenle</a>
+
+         </td>
+         <td>   <a href="{{url("sil/$akey")}}" type="submit" class="label theme-bg2 text-white f-12">Sil</a>
+</td></tr>
+@empty
+<tr>
+<td colspan="4">Veri bulunamadı</td>
+</tr>
+@endforelse
+
+
+</tbody> --}}
 	<!--product-starts-->
 	<div class="product">
 		<div class="container">
 			<div class="product-top">
 				<div class="product-one">
+                    @forelse ($bilgi as $key => $val)
+                    <input  type="hidden" class="form-control" name="a"  {{ $akey=$val ['id']}} >
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+							<a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{asset("images/p-1.png")}}" alt="" /></a>
 							<div class="product-bottom">
-								<h3>Smart Watches</h3>
+								<h3>{{  $val ['urun_adi']}}</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">329 TL</span></h4>
+								<h4><a class="item_add" onclick="sepet('{{$val ['id']}}')" href="#" type="submit"><i></i></a> <span class=" item_price">{{  $val ['fiyat']." $"}}</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 product-left">
+                    @empty
+                    Veri bulunamadı
+                    @endforelse<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					{{-- <div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
 							<a href="single" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
 							<div class="product-bottom">
@@ -176,6 +202,43 @@
 		</div>
 	</div>
 	<!--product-end-->
+	</div>--}}
+	<!--product-end-->
+    <script>
+        var dizi=[];
+        function sepet(id)
+        {
+            var sepet=document.getElementById('sepet');
+            if(localStorage.getItem('spt')==null)
+            {
+                console.log("if");
+                dizi=[];
+                dizi.push(id);
+                console.log(dizi);
+                localStorage.setItem('spt',dizi);
+
+            }
+            else
+            {
+                console.log("else");
+
+                dizi=[];
+                dizi.push(localStorage.getItem('spt'));
+                dizi.push(id);
+                console.log(dizi);
+                 localStorage.setItem('spt',dizi);
+
+            }
+
+            sepet.value=localStorage.getItem('spt');
+
+
+           console.log(localStorage.getItem('spt'));
+        }
+        </script>
+    <br><br><br><br>
 @include('footer')
 </body>
 </html>
+
+

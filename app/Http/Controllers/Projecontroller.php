@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Kullanici;
+use App\Models\sepet;
+use App\Models\Urunler;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
 
 
 
@@ -79,9 +81,55 @@ class Projecontroller extends Controller
 
             if(Session::has("kull"))
             {
-                Session::forget("kull");
+                Session::pull("kull");
                 return redirect("giris");
             }
           }
 
+           public function listt($id)
+      {
+
+          $veri=$id;
+          $dataa=Urunler::whereId($veri)->first();
+        //   dd($dataa);
+        $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->where("urunler.id",$veri)->
+        get(["resimler.resim1","resimler.resim2","resimler.resim3"]);
+       $bilgi=Urunler::get();
+          return view('single',compact('dataa','veri',"bilgi2","bilgi"));
+        }
+        public function liste()
+        {
+            $bilgi=Urunler::get();
+            // dd($bilgi);
+            return view('index',compact('bilgi'));
+        }
+        public function liste6()
+        {
+            $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->get(["ogrenciler.*","resimler.resim1","resimler.resim2","resimler.resim3"]);
+
+            return view('single',compact('bilgi2'));
+        }
+        public function urunekle(Request $request)
+        {
+
+            $dizi1=explode(",",$request->sepet);
+        $dizi="";
+        foreach ($dizi1 as $key => $value) {
+            $dizi.="'".$value."',";
+        }
+        $dizi=substr($dizi,0,-1);
+        //dd($request->sepet); $users = DB::table('users')
+
+
+       // $data= DB::select('select * from urunler where id in ('.$dizi.')');
+        $data["dz"]= DB::select('select distinct * from urunler inner join resimler ON resimler.idd=urunler.resim where id in ('.$dizi.')');
+       // $users = DB::table('urunler')->whereIn('id', "$dizi")->get();
+        // dd( $dizi1);
+        $data["ddd"]=$dizi1;
+          return view('checkout',$data);
+
+
+        }
+
 }
+

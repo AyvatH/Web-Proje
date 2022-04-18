@@ -21,6 +21,6 @@ class kullanicioturum
         {
             return back();
         }
-
+        return $next($request);
     }
 }

@@ -205,70 +205,109 @@
                                                             <span class="mx-1"><i class="far fa-chevron-double-down"></i></span>
                                                         </button>
                                                     </h2>
-                                                    <span class="my-2 text-danger h4">US $ 3600</span>
+                                                    <span class="my-2 text-danger h4"></span>
                                                 </div>
                                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                     <div class="card-body p-0">
                                                         <div>
+
+                                                            @forelse ($ddd as $key => $val2)
+                                                            {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
+                                                            @php
+                                                            $sayac1="";
+                                                            $sayac2="";
+                                                            $sayac3="";
+                                                            foreach ($ddd as $dg) {
+
+                                                                if($dg=="1")
+                                                                $sayac1++;
+                                                                else if($dg=="2")
+                                                                $sayac2++;
+                                                               else if($dg=="3")
+                                                                $sayac3++;
+                                                            }
+                                                           // dd( $ddd);
+
+                                                        @endphp
+
+
+
+                                                @empty
+                                                @endforelse
+
                                                             <table class="table table-sm">
                                                                 <thead>
                                                                     <tr class="ml-3">
-                                                                        <th></th>
-                                                                        <th></th>
-                                                                        <th class="text-left" width="50%">Product</th>
-                                                                        <th class="text-center" width="45%">Pieces</th>
-                                                                        <th>Subtotal</th>
+
+                                                                        <th>Resim</th>
+                                                                        <th class="text-left" width="50%">Ürün Adı</th>
+                                                                        <th class="text-center" width="45%">Adet</th>
+                                                                        <th>Fiyat</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                <tbody >
+
+                                                                    @forelse ($dz as $key => $val)
+                                                                    {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
+
                                                                     <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
+                                                                        <td><img class="img-responsive zoom-img" src="{{asset("$val->resim1")}}" width="50" height="50" alt="" /></td>
+                                                                        <td> {{$val->urun_adi}}</td>
                                                                         <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
+                                                                            @if($val->id=="1")
+                                                                           @php
+$top1=0;
+                                                                            echo $sayac1;
+                                                                           $top1=$sayac1*$val->fiyat;
+//dd($top1);
+                                                                           @endphp
+                                                                           @elseif($val->id=="2")
+                                                                           @php
+                                                                           $top2=0;
+                                                                            echo $sayac2;
+                                                                           $top2=$sayac2*$val->fiyat;
+//dd($top2);
+                                                                           @endphp
+                                                                           @else
+                                                                           @php
+                                                                            $top3=0;
+                                                                            echo $sayac3;
+                                                                           $top3=$sayac3*$val->fiyat;
+//dd($top1);
+                                                                           @endphp
+                                                                           @endif
                                                                         </td>
-                                                                        <td class="align-middle text-left">Spy Suit</td>
-                                                                        <td class="align-middle text-center">1 pieces</td>
-                                                                        <td class="align-middle text-right">$698</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/vOwj38HFrJ0/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
-                                                                        </td>
-                                                                        <td class="align-middle text-left">Hyper Hero Suit</td>
-                                                                        <td class="align-middle text-center">2 pieces</td>
-                                                                        <td class="align-middle text-right">$1998</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/FxraOMAkLOs/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;background-position: center center;"></div>
-                                                                        </td>
-                                                                        <td class="align-middle text-left">Stash Boots</td>
-                                                                        <td class="align-middle text-center">1 pieces</td>
-                                                                        <td class="align-middle text-right">$849</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="4" class="align-middle text-right">Freight</td>
-                                                                        <td class="align-middle text-right">55</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="4" class="align-middle text-right">Total</td>
-                                                                        <td class="align-middle text-right">3600</td>
-                                                                    </tr>
-                                                                </tbody>
+                                                                        <td> {{$val->fiyat}}</td>
+
+
+                                                        @empty
+                                                        <tr>
+                                                            <td colspan="4">Veri bulunamadı</td>
+                                                        </tr>
+                                                        @endforelse
+
+
+                                                        </tbody>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>Toplam</th>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td style="float:right;">@php
+                                                            if(!isset($top1))
+                                                            $top1=0;
+                                                           if(!isset($top2))
+                                                            $top2=0;
+                                                           if(!isset($top3))
+                                                            $top3=0;
+                                                                $toplam=$top1+$top2+$top3;
+                                                                echo $toplam;
+                                                            @endphp</td>
+                                                        </tr>
                                                             </table>
                                                         </div>
                                                     </div>

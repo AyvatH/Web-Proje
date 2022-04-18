@@ -34,9 +34,9 @@
                              <form id="addCustomer"  class="form-group" method="GET" action="{{route("checkout")}}" >
                                 @csrf
                                 <input type="hidden" id="sepet" name="sepet" />
-						<button type="submit">
+						<button type="submit" style="background-color:black;">
 							 <div class="total">
-								<span class="simpleCart_total"></span></div>
+								<span class="simpleCart_total" style="color:white;"></span></div>
 								<img src="{{asset('images/cart-1.png')}}" alt="" />
                         </button>
 						<p><a href="javascript:;" onclick="temizle()" class="simpleCart_empty">Sepeti Boşalt</a></p>

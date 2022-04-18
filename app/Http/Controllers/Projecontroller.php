@@ -92,7 +92,7 @@ class Projecontroller extends Controller
           $veri=$id;
           $dataa=Urunler::whereId($veri)->first();
         //   dd($dataa);
-        $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->where("urunler.id",$veri)->
+        $bilgi2=Urunler::join("resimler","resimler.idd","urunler.resim")->where("urunler.id",$veri)->
         get(["resimler.resim1","resimler.resim2","resimler.resim3"]);
        $bilgi=Urunler::get();
           return view('single',compact('dataa','veri',"bilgi2","bilgi"));

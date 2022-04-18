@@ -315,11 +315,11 @@ $top1=0;
                                                 <div class="alert alert-secondary border-0 h4 text-center bg-alert rounded-0" role="alert">
                                                     Orderer information
                                                 </div>
-                                                <form class="needs-validation" novalidate>
+
                                                     <div class="form-row">
                                                         <div class="col-md-4 mb-3">
                                                             <label for="name">Name</label>
-                                                            <input type="text" class="form-control space" id="name" placeholder="please enter your name  . . ." required>
+                                                            <input type="text" class="form-control space" id="name" name="name" placeholder="please enter your name  . . ." required>
                                                             <div class="valid-feedback">
                                                                 Correct format!
                                                             </div>
@@ -329,7 +329,7 @@ $top1=0;
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             <label for="email">Email</label>
-                                                            <input type="text" class="form-control space" id="email" placeholder="please enter your email . . ." required>
+                                                            <input type="text" class="form-control space" id="email" name="email" placeholder="please enter your email . . ." required>
                                                             <div class="valid-feedback">
                                                                 Correct format!
                                                             </div>
@@ -339,7 +339,7 @@ $top1=0;
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             <label for="email">Telephone / Local phone</label>
-                                                            <input type="tel" class="form-control space" id="email" placeholder="please enter your email . . ." required>
+                                                            <input type="tel" class="form-control space" id="tel" name="tel" placeholder="please enter your email . . ." required>
                                                             <div class="valid-feedback">
                                                                 Correct format!
                                                             </div>
@@ -351,7 +351,7 @@ $top1=0;
                                                     <div class="form-row">
                                                         <div class="col-md-4 mb-3">
                                                             <label for="country">Country</label>
-                                                            <select class="form-control" id="country . . ." required>
+                                                            <select class="form-control" id="ulke" name="ulke" required>
                                                                         <option>Mars</option>
                                                                         <option>Taiwan</option>
                                                                         <option>Japan</option>
@@ -371,7 +371,7 @@ $top1=0;
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             <label for="city">City</label>
-                                                            <input type="text" class="form-control space" id="city" placeholder="please enter your city . . ." required>
+                                                            <input type="text" class="form-control space" id="city"  name="city"  placeholder="please enter your city . . ." required>
                                                             <div class="valid-feedback">
                                                                 Correct format !
                                                             </div>
@@ -381,7 +381,7 @@ $top1=0;
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             <label for="postal">Postal code</label>
-                                                            <select class="form-control" id="country . . ." required>
+                                                            <select class="form-control" id="postakodu" required>
                                                                         <option>990</option>
                                                                         <option>991</option>
                                                                         <option>992</option>
@@ -402,7 +402,7 @@ $top1=0;
                                                         </div>
                                                         <div class="col-md-12 mb-3">
                                                             <label for="address">Address</label>
-                                                            <input type="text" class="form-control space" id="address" placeholder="please enter your town address . . ." required>
+                                                            <input type="text" class="form-control space" id="address" name="address" placeholder="please enter your town address . . ." required>
                                                             <div class="valid-feedback">
                                                                 Correct format !
                                                             </div>
@@ -411,12 +411,12 @@ $top1=0;
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex justify-content-center">
-                                                        <button class="btn btn-primary" type="submit">Submit orderer information</button>
-                                                    </div>
-                                                </form>
+
+
+
+
                                                 <div class="list-group mt-5 p-0 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
-                                                    <a href="#step2" class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
+                                                    <a href="#step2" onclick="gfg_Run()" class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
                                                         Next <i class="fal fa-arrow-circle-right"></i>
                                                     </a>
                                                 </div>
@@ -566,40 +566,69 @@ $top1=0;
                                                         <th>Subtotal</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody >
+
+                                                    @forelse ($dz as $key => $val)
+                                                    {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
+
                                                     <tr>
+                                                        <td><img class="img-responsive zoom-img" src="{{asset("$val->resim1")}}" width="50" height="50" alt="" /></td>
+                                                        <td> {{$val->urun_adi}}</td>
                                                         <td>
-                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
+                                                            @if($val->id=="1")
+                                                           @php
+$top1=0;
+                                                            echo $sayac1;
+                                                           $top1=$sayac1*$val->fiyat;
+//dd($top1);
+                                                           @endphp
+                                                           @elseif($val->id=="2")
+                                                           @php
+                                                           $top2=0;
+                                                            echo $sayac2;
+                                                           $top2=$sayac2*$val->fiyat;
+//dd($top2);
+                                                           @endphp
+                                                           @else
+                                                           @php
+                                                            $top3=0;
+                                                            echo $sayac3;
+                                                           $top3=$sayac3*$val->fiyat;
+//dd($top1);
+                                                           @endphp
+                                                           @endif
                                                         </td>
-                                                        <td class="align-middle text-left">Spy Suit</td>
-                                                        <td class="align-middle text-center">1 pieces</td>
-                                                        <td class="align-middle text-right">$698</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/vOwj38HFrJ0/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
-                                                        </td>
-                                                        <td class="align-middle text-left">Hyper Hero Suit</td>
-                                                        <td class="align-middle text-center">2 pieces</td>
-                                                        <td class="align-middle text-right">$1998</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/FxraOMAkLOs/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;background-position: center center;"></div>
-                                                        </td>
-                                                        <td class="align-middle text-left">Stash Boots</td>
-                                                        <td class="align-middle text-center">1 pieces</td>
-                                                        <td class="align-middle text-right">$849</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="3" class="align-middle text-right">Freight</td>
-                                                        <td class="align-middle text-right">55</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="3" class="align-middle text-right">Total</td>
-                                                        <td class="align-middle text-right">3600</td>
-                                                    </tr>
-                                                </tbody>
+                                                        <td> {{$val->fiyat}}</td>
+
+
+                                        @empty
+                                        <tr>
+                                            <td colspan="4">Veri bulunamadı</td>
+                                        </tr>
+                                        @endforelse
+
+
+                                        </tbody>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Toplam</th>
+                                        <tr>
+
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="float:right;">@php
+                                            if(!isset($top1))
+                                            $top1=0;
+                                           if(!isset($top2))
+                                            $top2=0;
+                                           if(!isset($top3))
+                                            $top3=0;
+                                                $toplam=$top1+$top2+$top3;
+                                                echo $toplam;
+                                            @endphp</td>
+                                        </tr>
                                             </table>
                                         </div>
                                         <h2 class="text-center my-3">Profile</h2>
@@ -607,20 +636,22 @@ $top1=0;
                                             <table class="table table-sm">
                                                 <tbody>
                                                     <tr>
-                                                        <td width="35%" class="align-middle text-left">Name</td>
-                                                        <td class="text-left">Alick</td>
+
+                                                        <td width="35%" class="align-middle text-left" >Name</td>
+                                                        <td class="text-left"><p  id="GFG_DOWN"></p></td>
                                                     </tr>
                                                     <tr>
+
                                                         <td class="align-middle text-left">Telephone</td>
-                                                        <td class="align-middle text-left">0966-666666</td>
+                                                        <td class="align-middle text-left"><p  id="GFG_DOWNa"></p></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="align-middle text-left">Email</td>
-                                                        <td class="align-middle text-left">A12345@gmail.com</td>
+                                                        <td class="align-middle text-left"><p  id="GFG_DOWNb"></p></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="align-middle text-left">Address</td>
-                                                        <td class="align-middle text-left">xxBlock xxRoad 123</td>
+                                                        <td class="align-middle text-left"><p  id="GFG_DOWNc"></p></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -628,7 +659,7 @@ $top1=0;
                                     </div>
                                 </div>
                                 <div class="list-group mt-5 p-0 mb-3 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
-                                    <a href="#step1" class="list-group-item-dark ml-3 w-35 py-2  rounded text-center btns home" data-toggle="list" role="tab">
+                                    <a href="{{route("home")}}" class="list-group-item-dark ml-3 w-35 py-2  rounded text-center btns home" >
                                         <i class="fas fa-home"></i> Back
                                     </a>
                                 </div>
@@ -679,7 +710,7 @@ $top1=0;
             })();
             var btns = document.querySelector('.home')
             btns.addEventListener('click', function() {
-                alert('Thank for your order !');
+                // alert('Thank for your order !');
             }, false);
             $(document).ready(function() {
                 $('#delete').on('show.bs.modal', function(event) {
@@ -711,4 +742,26 @@ $top1=0;
 
 @include("footer")
 </body>
+<script>
+    var el_down = document.getElementById("GFG_DOWN");
+    var el_downa = document.getElementById("GFG_DOWNa");
+    var el_downb = document.getElementById("GFG_DOWNb");
+    var el_downc = document.getElementById("GFG_DOWNc");
+    var inputF = document.getElementById("name");
+    var inputa= document.getElementById("email");
+    var inputb= document.getElementById("tel");
+    var inputc = document.getElementById("address");
+
+    function gfg_Run() {
+        inputF.setAttribute('value', '');
+        el_down.innerHTML = inputF.value ;
+        inputa.setAttribute('value', '');
+        el_downa.innerHTML = inputa.value ;
+        inputb.setAttribute('value', '');
+        el_downb.innerHTML = inputb.value ;
+        inputc.setAttribute('value', '');
+        el_downc.innerHTML = inputc.value ;
+    }
+</script>
 </html>
+

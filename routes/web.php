@@ -29,6 +29,12 @@ Route::view('products','products')->name("products");
 Route::view('single','single')->name("single");
 Route::view('typo','typo')->name("typo");
 
+Route::view('adminana','adminana');
+Route::view('admingiris','admingiris');
+Route::view('adminekle','adminekle');
+Route::view('adminkul','adminkul');
+Route::view('adminsip','adminsip');
+
 Route::post('kayit',[Projecontroller::class,'kullaniciekle']);
 Route::post('giris',[Projecontroller::class,'kullanicigiris'])->name("kullhome");
 Route::get('index', [Projecontroller::class, 'kullanasayfa'])->name("kullanasay");

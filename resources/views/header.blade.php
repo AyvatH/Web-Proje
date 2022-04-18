@@ -1,5 +1,10 @@
 <title>İzmir Saat</title>
+<<<<<<< HEAD
+<link rel="icon" href="{{asset('images/logo.png')}}" type="image/x-icon">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+=======
 <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+>>>>>>> b1a7bf513940d8b3de44479c08464ecff4a45a96
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
@@ -71,6 +76,7 @@
 	<!--top-header-->
 	<!--start-logo-->
 	<div class="logo">
+        <i ><img src="{{url('images/logo.png')}}" width="75px" height="75px"></i>
 		<a href="index"><h1>İZMİR SAATLERİ</h1></a>
 	</div>
 	<!--start-logo-->

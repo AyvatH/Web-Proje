@@ -220,55 +220,23 @@
                                                                         <th>Subtotal</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                <tbody >
+
+                                                                    @forelse ($dz as $key => $val)
+                                                                    {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
+
                                                                     <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
-                                                                        </td>
-                                                                        <td class="align-middle text-left">Spy Suit</td>
-                                                                        <td class="align-middle text-center">1 pieces</td>
-                                                                        <td class="align-middle text-right">$698</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/vOwj38HFrJ0/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;"></div>
-                                                                        </td>
-                                                                        <td class="align-middle text-left">Hyper Hero Suit</td>
-                                                                        <td class="align-middle text-center">2 pieces</td>
-                                                                        <td class="align-middle text-right">$1998</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="align-middle text-center">
-                                                                            <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                                                                <i class="fal fa-trash-alt"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="rounded" style="background-image: url(https://unsplash.com/photos/FxraOMAkLOs/download?force=true&w=640); width: 60px; height: 60px; background-size: cover;background-position: center center;"></div>
-                                                                        </td>
-                                                                        <td class="align-middle text-left">Stash Boots</td>
-                                                                        <td class="align-middle text-center">1 pieces</td>
-                                                                        <td class="align-middle text-right">$849</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="4" class="align-middle text-right">Freight</td>
-                                                                        <td class="align-middle text-right">55</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="4" class="align-middle text-right">Total</td>
-                                                                        <td class="align-middle text-right">3600</td>
-                                                                    </tr>
-                                                                </tbody>
+                                                                        <td>{{  $val->resim1}}</td>
+
+
+                                                        @empty
+                                                        <tr>
+                                                            <td colspan="4">Veri bulunamadı</td>
+                                                        </tr>
+                                                        @endforelse
+
+
+                                                        </tbody>
                                                             </table>
                                                         </div>
                                                     </div>

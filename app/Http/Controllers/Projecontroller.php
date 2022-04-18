@@ -122,9 +122,10 @@ class Projecontroller extends Controller
 
 
        // $data= DB::select('select * from urunler where id in ('.$dizi.')');
-        $data["dz"]= DB::select('select * from urunler inner join resimler where resimler.id in ('.$dizi.')');
+        $data["dz"]= DB::select('select distinct * from urunler inner join resimler ON resimler.idd=urunler.resim where id in ('.$dizi.')');
        // $users = DB::table('urunler')->whereIn('id', "$dizi")->get();
-          //dd( $data2);
+        // dd( $dizi1);
+        $data["ddd"]=$dizi1;
           return view('checkout',$data);
 
 

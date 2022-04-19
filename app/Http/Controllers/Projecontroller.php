@@ -181,11 +181,11 @@ $kull=session()->get('kull')->id;
             else
             $kull=session()->get('kull')->id;
 
-            $bilgi=Kullanici:: join("sepet","kullanici.id","sepet.mus_id")->where("kullanici.id",$kull)->
-            join("sepet","sepet.urun_id","urunler.id")->
+            $bilgi2=Kullanici:: join("sepet","kullanici.id","sepet.mus_id")->where("kullanici.id",$kull)->
+            join("urunler","sepet.urun_id","urunler.id")->
             get(["sepet.*","kullanici.*","urunler.*"]);
-            dd($bilgi);
-            return view('siparis',compact('bilgi'));
+           // dd($bilgi2);
+            return view('siparis',compact('bilgi2'));
         }
 
 }

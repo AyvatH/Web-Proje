@@ -41,7 +41,7 @@
                         <th>Adres</th>
                     </tr>
                 </thead>
-                {{-- <tbody >
+                <tbody >
 
                     @forelse ($bilgi2 as $key2 => $val2)
                     <input  type="hidden" class="form-control" name="kad"  {{ $akey2=$val2 ['id']}} placeholder="Kullanıcı Adı">
@@ -49,9 +49,10 @@
                     <tr>
                         <td>{{  session()->get('kull')->ad}}</td>
                         <td>{{ session()->get('kull')->soyad }}</td>
-                        <td>{{ session()->get('kull')->no }}</td>
-                         <td>{{ $veri2}}</td>
-                         <td>{{ $val2 ["durum"]}}</td>
+                        <td>{{ $val2 ["urun_adi"]}}</td>
+                         <td>{{ $val2 ["adet"]}}</td>
+                         <td>{{ $val2 ["fiyat"]}}</td>
+                         <td>{{ $val2 ["adres"]}}</td>
                       </tr>
         @empty
         <tr>
@@ -60,7 +61,7 @@
         @endforelse
 
 
-        </tbody> --}}
+        </tbody>
             </table>
         </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         @include('footer');

@@ -9,6 +9,6 @@ class sepet extends Model
 {
     use HasFactory;
     protected $table="sepet";
-    protected $fillable=["id" ,"mus_id","urun_id","adet"];
+    protected $fillable=["id" ,"mus_id","urun_id","adet","adres","tarih"];
     public $timestamps = false;
 }

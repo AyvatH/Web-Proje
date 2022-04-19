@@ -28,6 +28,7 @@ Route::view('checkout','checkout')->name("checkout");
 Route::view('products','products')->name("products");
 Route::view('single','single')->name("single");
 Route::view('typo','typo')->name("typo");
+Route::view('siparis','siparis')->name("siparis");
 
 Route::view('adminana','adminana');
 Route::view('admingiris','admingiris');
@@ -40,8 +41,10 @@ Route::post('giris',[Projecontroller::class,'kullanicigiris'])->name("kullhome")
 Route::get('index', [Projecontroller::class, 'kullanasayfa'])->name("kullanasay");
 Route::get('kullcikis',[Projecontroller::class,'kullcikis'])->name("kullcikis");
 Route::get('index',[Projecontroller::class,'liste'])->name("home");
+Route::get('products',[Projecontroller::class,'liste2'])->name("products");
 Route::get('single/{id}',[Projecontroller::class,'listt']);
 Route::get('checkout',[Projecontroller::class,'urunekle'])->name("checkout");
+Route::post('checkout',[Projecontroller::class,'siparisekle']);
 
 
 

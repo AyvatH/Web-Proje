@@ -1,10 +1,7 @@
 <title>İzmir Saat</title>
-<<<<<<< HEAD
 <link rel="icon" href="{{asset('images/logo.png')}}" type="image/x-icon">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-=======
 <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
->>>>>>> b1a7bf513940d8b3de44479c08464ecff4a45a96
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="{{asset('js/jquery-1.11.0.min.js')}}"></script>
 <!--Custom-Theme-files-->
@@ -45,6 +42,7 @@
 								<img src="{{asset('images/cart-1.png')}}" alt="" />
                         </button>
 						<p><a href="javascript:;" onclick="temizle()" class="simpleCart_empty">Sepeti Boşalt</a></p>
+                        <p><a href="{{route("siparis")}}" onclick="temizle()" class="simpleCart_empty">Siparişler</a></p>
 						<div class="clearfix"> </div>
                              </form>
 
@@ -52,18 +50,18 @@
 
                     @if(session()->get('kull')==null)
 					<div style="margin-right:50px;" class="cart box_1">
-						<p><a href="giris">
+						<p><a href="giris" onclick="temizle()" class="simpleCart_empty">
 							<img src="{{asset('images/arr.png')}}" height="20px" width="20" alt="" />
 						</a></p>
-						<p><a href="giris" class="simpleCart_empty">Giriş Yap</a></p>
+						<p><a href="giris" onclick="temizle()" class="simpleCart_empty">Giriş Yap</a></p>
 						<div class="clearfix"> </div>
 @else
 <div style="margin-right:50px;" class="cart box_1">
     <p><a href="#">
-        <img src="images/arr.png" height="20px" width="20" alt="" />
+        <img src="{{asset('images/arr.png')}}" height="20px" width="20" alt="" />
     </a></p>
     <p><a href="{{route("home")}}" class="simpleCart_empty"> {{ session()->get('kull')->ad.' '.session()->get('kull')->soyad }}</a></p>
-    <p><a href="{{route("kullcikis")}}" class="simpleCart_empty"> Çıkış Yap</a></p>
+    <p><a href="{{route("kullcikis")}}"  onclick="temizle()" class="simpleCart_empty"> Çıkış Yap</a></p>
     <div class="clearfix"> </div>
 
 @endif
@@ -188,13 +186,13 @@
 		<div  id="top" class="callbacks_container">
 			<ul class="rslides" id="slider4">
 			    <li>
-					<img src="{{asset('images/bnr-1.jpg')}}" alt=""/>
+					<a href="{{route("products")}}"><img src="{{asset('images/bnr-1.jpg')}}" alt=""/></a>
 				</li>
 				<li>
-					<img src="{{asset('images/bnr-2.jpg')}}" alt=""/>
+					<a href="{{route("products")}}"><img src="{{asset('images/bnr-2.jpg')}}" alt=""/></a>
 				</li>
 				<li>
-					<img src="{{asset('images/bnr-3.jpg')}}" alt=""/>
+					<a href="{{route("products")}}"><img src="{{asset('images/bnr-3.jpg')}}" alt=""/></a>
 				</li>
 			</ul>
 		</div>

@@ -86,7 +86,8 @@
 								<li><span>SKU</span>
 								<span class="women1">: CK09</span></li>
 							</ul>
-								<a href="#" class="add-cart item_add">Sepete Ekle</a>
+
+                        <a onclick="sepet('{{$dataa->id}}')" href="#" type="submit" class="add-cart item_add">Sepete Ekle</a>
 
 						</div>
 					</div>
@@ -154,7 +155,40 @@
 			</div>
 		</div>
 	</div>
-	<!--end-single-->
+	<!--end-single--><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	@include('footer')
 </body>
+<script>
+    var dizi=[];
+    function sepet(id)
+    {
+        var sepet=document.getElementById('sepet');
+        if(localStorage.getItem('spt')==null)
+        {
+            console.log("if");
+            dizi=[];
+            dizi.push(id);
+            console.log(dizi);
+            localStorage.setItem('spt',dizi);
+
+        }
+        else
+        {
+            console.log("else");
+
+            dizi=[];
+            dizi.push(localStorage.getItem('spt'));
+            dizi.push(id);
+            console.log(dizi);
+             localStorage.setItem('spt',dizi);
+
+        }
+
+        sepet.value=localStorage.getItem('spt');
+
+
+       console.log(localStorage.getItem('spt'));
+    }
+    </script>
 </html>

@@ -246,9 +246,13 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody >
+                                                                    <form id="addCustomer"  class="form-group" method="POST" >
+                                                                        @csrf <!-- {{ csrf_field() }} -->
 
                                                                     @forelse ($dz as $key => $val)
+                                                                    <input type="hidden" value="{{$val->id}}" name="id{{$key}}"/>
                                                                     {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
+
 
                                                                     <tr>
                                                                         <td><img class="img-responsive zoom-img" src="{{asset("$val->resim1")}}" width="50" height="50" alt="" /></td>
@@ -411,15 +415,17 @@ $top1=0;
                                                             </div>
                                                         </div>
                                                     </div>
+                                                                        <input  type="hidden" class="form-control" name="a" id="a"  value="{{$sayac1}}">
+                                                                        <input  type="hidden" class="form-control" name="b" id="b" value="{{$sayac2}}">
+                                                                        <input  type="hidden" class="form-control" name="c" id="c" value="{{$sayac3}}">
+                                                                        <input  type="hidden" class="form-control" name="d"  id="d" value="{{$toplam}}">
 
-
-
-
-                                                <div class="list-group mt-5 p-0 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
+                                                <button type="submit" class="list-group mt-5 p-0 justify-content-center" >
                                                     <a href="#step2" onclick="gfg_Run()" class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
                                                         Next <i class="fal fa-arrow-circle-right"></i>
                                                     </a>
-                                                </div>
+                                                </button>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>

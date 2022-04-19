@@ -20,7 +20,7 @@
 			        after: function () {
 			          $('.events').append("<li>after event fired.</li>");
 			        }
-			      });
+                    });
 
 			    });
 			  </script>
@@ -28,7 +28,7 @@
 	<!--about-starts-->
 	<div class="about">
 		<div class="container">
-			<div class="about-top grid-1">
+			<div class="about-top grid-1"> <a href="{{route("products")}}">
 				<div class="col-md-4 about-left">
 					<figure class="effect-bubba">
 						<img class="img-responsive" src="images/abt-1.jpg" alt=""/>
@@ -36,7 +36,7 @@
 							<h2>Lüks Saatler</h2>
 						</figcaption>
 					</figure>
-				</div>
+				</div> </a><a href="{{route("products")}}">
 				<div class="col-md-4 about-left">
 					<figure class="effect-bubba">
 						<img class="img-responsive" src="images/abt-2.jpg" alt=""/>
@@ -44,7 +44,8 @@
 							<h4>Klasik Saatler</h4>
 						</figcaption>
 					</figure>
-				</div>
+				</div></a>
+                <a href="{{route("products")}}">
 				<div class="col-md-4 about-left">
 					<figure class="effect-bubba">
 						<img class="img-responsive" src="images/abt-3.jpg" alt=""/>
@@ -52,7 +53,7 @@
 							<h4>Dijital Saatler</h4>
 						</figcaption>
 					</figure>
-				</div>
+				</div></a>
 				<div class="clearfix"></div>
 			</div>
 		</div>

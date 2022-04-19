@@ -30,7 +30,7 @@ Route::view('single','single')->name("single");
 Route::view('typo','typo')->name("typo");
 Route::view('siparis','siparis')->name("siparis");
 
-Route::view('adminana','adminana');
+Route::view('adminana','adminana')->name("adminhome");;
 Route::view('admingiris','admingiris');
 Route::view('adminekle','adminekle');
 Route::view('adminkul','adminkul');
@@ -46,5 +46,11 @@ Route::get('single/{id}',[Projecontroller::class,'listt']);
 Route::get('checkout',[Projecontroller::class,'urunekle'])->name("checkout");
 Route::post('checkout',[Projecontroller::class,'siparisekle']);
 Route::get('siparis',[Projecontroller::class,'listee'])->name("siparis");
+
+Route::post('admingiris',[Projecontroller::class,'admingiris'])->name("adminhome");
+Route::get('adminana', [Projecontroller::class, 'adminanasayfa'])->name("adminanasay");
+Route::get('admincikis',[Projecontroller::class,'admincikis'])->name("admincikis");
+
+Route::post('adminekle',[Projecontroller::class,'uruneklee']);
 
 

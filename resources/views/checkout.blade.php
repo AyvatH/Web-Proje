@@ -214,9 +214,10 @@
                                                             @forelse ($ddd as $key => $val2)
                                                             {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
                                                             @php
-                                                            $sayac1="";
-                                                            $sayac2="";
-                                                            $sayac3="";
+                                                            $sayac1=0;
+                                                            $sayac2=0;
+                                                            $sayac3=0;
+                                                            $sayac4=0;
                                                             foreach ($ddd as $dg) {
 
                                                                 if($dg=="1")
@@ -225,6 +226,8 @@
                                                                 $sayac2++;
                                                                else if($dg=="3")
                                                                 $sayac3++;
+                                                                else if($dg=="11")
+                                                                $sayac4++;
                                                             }
                                                            // dd( $ddd);
 
@@ -250,6 +253,7 @@
                                                                         @csrf <!-- {{ csrf_field() }} -->
 
                                                                     @forelse ($dz as $key => $val)
+
                                                                     <input type="hidden" value="{{$val->id}}" name="id{{$key}}"/>
                                                                     {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
 
@@ -272,13 +276,20 @@ $top1=0;
                                                                            $top2=$sayac2*$val->fiyat;
 //dd($top2);
                                                                            @endphp
-                                                                           @else
+                                                                           @elseif($val->id=="3")
                                                                            @php
                                                                             $top3=0;
                                                                             echo $sayac3;
                                                                            $top3=$sayac3*$val->fiyat;
 //dd($top1);
                                                                            @endphp
+                                                                            @else
+                                                                            @php
+                                                                             $top4=0;
+                                                                             echo $sayac4;
+                                                                            $top4=$sayac4*$val->fiyat;
+ //dd($top1);
+                                                                            @endphp
                                                                            @endif
                                                                         </td>
                                                                         <td> {{$val->fiyat}}</td>
@@ -308,7 +319,7 @@ $top1=0;
                                                             $top2=0;
                                                            if(!isset($top3))
                                                             $top3=0;
-                                                                $toplam=$top1+$top2+$top3;
+                                                                $toplam=$top1+$top2+$top3+$top4;
                                                                 echo $toplam;
                                                             @endphp</td>
                                                         </tr>

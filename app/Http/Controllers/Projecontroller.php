@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Kullanici;
 use App\Models\sepet;
@@ -125,7 +127,7 @@ class Projecontroller extends Controller
         $data["dz"]= DB::select('select distinct * from urunler inner join resimler ON resimler.idd=urunler.resim where id in ('.$dizi.')');
        // $users = DB::table('urunler')->whereIn('id', "$dizi")->get();
         // dd( $dizi1);
-        $data["ddd"]=$dizi1;
+        $data["ddd"]=$dizi1;// dd($data);
           return view('checkout',$data);
 
 
@@ -145,6 +147,7 @@ if(session()->get('kull')==null)
 $kull=1;
 else
 $kull=session()->get('kull')->id;
+
 //dd($kull);
             foreach ($gelen as $key => $value) {
                 if($value=="1"&&$sayac==0){
@@ -152,18 +155,30 @@ $kull=session()->get('kull')->id;
                 (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->a,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac++;
+                $dataa=Urunler::where("id",$value)->first();
+                $deger=0;
+                $deger=($dataa->stok)-$request->a;
+                Urunler::where('id',$value)->update(["stok"=>$deger]);
             }
           else  if($value=="2"&&$sayac1==0){
                 sepet::create
                 (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->b,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac1++;
+                $dataa=Urunler::where("id",$value)->first();
+                $deger=0;
+                $deger=($dataa->stok)-$request->b;
+                Urunler::where('id',$value)->update(["stok"=>$deger]);
             }
             else  if($value=="3"&&$sayac2==0){
                 sepet::create
                 (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->c,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac2++;
+                $dataa=Urunler::where("id",$value)->first();
+                $deger=0;
+                $deger=($dataa->stok)-$request->c;
+                Urunler::where('id',$value)->update(["stok"=>$deger]);
             }
 
             }
@@ -187,6 +202,82 @@ $kull=session()->get('kull')->id;
            // dd($bilgi2);
             return view('siparis',compact('bilgi2'));
         }
+
+
+        public function admingiris(Request $request)
+        {
+
+
+            $request->validate([
+                "eposta" => "required",
+                "sifre" => "required"
+            ]);
+
+            $dataa=Admin::where("eposta","=",$request->eposta)->first();
+           // dd($dataa);
+            if($dataa)
+            {
+                if(Hash::check($request->sifre,$dataa->sifre))
+                { //dd($dataa->sifre);
+                Session()->put('admin',$dataa);
+
+                return redirect()->route('adminanasay');
+                }
+                else
+            {
+                dd("hata");
+                print_r("hata sifre");
+                return back()->with("Hata","Yanlış şifre girdiniz!");
+            }
+
+            }
+            else
+            {
+                print_r("hata no");
+                return back()->with("Hata","Yanlış numara girdiniz!");
+            }
+
+
+
+          }
+          public function adminanasayfa()
+          {
+
+
+
+              return view('adminana');
+
+            }
+            public function admincikis()
+            {
+
+
+                if(Session::has("admin"))
+                {
+                    Session::pull("admin");
+                    return redirect("admingiris");
+                }
+              }
+              public function uruneklee(Request $request)
+              {
+                $request->validate([
+                    'file' => 'required|max:2048'],
+                    ['file.required'=>'Fotoğraf eksik.'
+
+                ]);
+                $id=rand(10,100);
+                $fileName = time().'.'.$request->file->extension();
+               // dd($fileName);
+                $request->file->move(public_path('images'), $fileName);
+                  Urunler::create
+                  (["id"=>"$id","urun_adi"=>$request->urun_adi,"stok"=>$request->stok,"renk"=>$request->renk,"fiyat"=>$request->fiyat,"aciklama"=>$request->aciklama,
+                  "anaresim"=>"images/".$fileName]);
+
+                 return redirect('adminekle');
+
+
+              }
+
 
 }
 

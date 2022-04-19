@@ -18,10 +18,10 @@
             <div class="signin-image">
                 <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
             </div>
-
             <div class="signin-form">
-                <h2 class="form-title">Giris Yap</h2>
-                <form id="addCustomer"  class="form-group" method="POST" action="{{route('kullhome')}}" >
+                <h2 class="form-title">Admin Giris Yap</h2>
+                <form id="addCustomer"  class="form-group" method="POST" action="{{route('adminhome')}}" >
+                    @csrf <!-- {{ csrf_field() }} -->
                     <div class="form-group">
                         <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="eposta" id="eposta" placeholder="E-posta"/>

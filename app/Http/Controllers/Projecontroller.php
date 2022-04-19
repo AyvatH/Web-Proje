@@ -133,30 +133,35 @@ class Projecontroller extends Controller
 
         public function siparisekle(Request $request)
         {
-            $gel=$request->all();
+
 
             $gelen=explode(",",$request->sepet);
-           // dd($gel);
-            $dizi="";
+
+
 $sayac=0;
 $sayac1=0;
 $sayac2=0;
+if(session()->get('kull')==null)
+$kull=1;
+else
+$kull=session()->get('kull')->id;
+//dd($kull);
             foreach ($gelen as $key => $value) {
                 if($value=="1"&&$sayac==0){
                 sepet::create
-                (["mus_id"=>"1","urun_id"=>$value,
+                (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->a,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac++;
             }
           else  if($value=="2"&&$sayac1==0){
                 sepet::create
-                (["mus_id"=>"1","urun_id"=>$value,
+                (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->b,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac1++;
             }
             else  if($value=="3"&&$sayac2==0){
                 sepet::create
-                (["mus_id"=>"1","urun_id"=>$value,
+                (["mus_id"=>$kull,"urun_id"=>$value,
                 "adet"=>$request->c,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
                 $sayac2++;
             }
@@ -165,9 +170,22 @@ $sayac2=0;
 
 
 
-           return back();
+           return redirect(route('home'));
 
 
+        }
+        public function listee()
+        {
+            if(session()->get('kull')==null)
+            $kull=1;
+            else
+            $kull=session()->get('kull')->id;
+
+            $bilgi=Kullanici:: join("sepet","kullanici.id","sepet.mus_id")->where("kullanici.id",$kull)->
+            join("sepet","sepet.urun_id","urunler.id")->
+            get(["sepet.*","kullanici.*","urunler.*"]);
+            dd($bilgi);
+            return view('siparis',compact('bilgi'));
         }
 
 }

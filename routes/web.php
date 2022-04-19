@@ -45,6 +45,6 @@ Route::get('products',[Projecontroller::class,'liste2'])->name("products");
 Route::get('single/{id}',[Projecontroller::class,'listt']);
 Route::get('checkout',[Projecontroller::class,'urunekle'])->name("checkout");
 Route::post('checkout',[Projecontroller::class,'siparisekle']);
-
+Route::get('siparis',[Projecontroller::class,'listee'])->name("siparis");
 
 

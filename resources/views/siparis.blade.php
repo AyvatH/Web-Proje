@@ -41,30 +41,26 @@
                         <th>Adres</th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
+                {{-- <tbody >
 
-        </tbody>
+                    @forelse ($bilgi2 as $key2 => $val2)
+                    <input  type="hidden" class="form-control" name="kad"  {{ $akey2=$val2 ['id']}} placeholder="Kullanıcı Adı">
+
+                    <tr>
+                        <td>{{  session()->get('kull')->ad}}</td>
+                        <td>{{ session()->get('kull')->soyad }}</td>
+                        <td>{{ session()->get('kull')->no }}</td>
+                         <td>{{ $veri2}}</td>
+                         <td>{{ $val2 ["durum"]}}</td>
+                      </tr>
+        @empty
+        <tr>
+            <td colspan="4">Veri bulunamadı</td>
+        </tr>
+        @endforelse
+
+
+        </tbody> --}}
             </table>
         </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         @include('footer');

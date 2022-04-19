@@ -246,7 +246,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody >
-                                                                    <form id="addCustomer"  class="form-group" method="POST" >
+                                                                    <form id="sepetekle"  class="form-group" method="POST" >
                                                                         @csrf <!-- {{ csrf_field() }} -->
 
                                                                     @forelse ($dz as $key => $val)
@@ -420,11 +420,11 @@ $top1=0;
                                                                         <input  type="hidden" class="form-control" name="c" id="c" value="{{$sayac3}}">
                                                                         <input  type="hidden" class="form-control" name="d"  id="d" value="{{$toplam}}">
 
-                                                <button type="submit" class="list-group mt-5 p-0 justify-content-center" >
+                                                <div  class="list-group mt-5 p-0 justify-content-center" >
                                                     <a href="#step2" onclick="gfg_Run()" class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
                                                         Next <i class="fal fa-arrow-circle-right"></i>
                                                     </a>
-                                                </button>
+                                                </div>
                                             </form>
                                             </div>
                                         </div>
@@ -665,7 +665,7 @@ $top1=0;
                                     </div>
                                 </div>
                                 <div class="list-group mt-5 p-0 mb-3 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
-                                    <a href="{{route("home")}}" class="list-group-item-dark ml-3 w-35 py-2  rounded text-center btns home" >
+                                    <a href="javascript:void()" onclick="sepet()" class="list-group-item-dark ml-3 w-35 py-2 simpleCart_empty  rounded text-center btns home" >
                                         <i class="fas fa-home"></i> Back
                                     </a>
                                 </div>
@@ -757,6 +757,14 @@ $top1=0;
     var inputa= document.getElementById("email");
     var inputb= document.getElementById("tel");
     var inputc = document.getElementById("address");
+
+    function sepet() {
+    document.getElementById("sepetekle").submit();
+    localStorage.removeItem("spt");
+            console.log("asd");
+            var sepet=document.getElementById('sepet');
+        sepet.value=null;
+    }
 
     function gfg_Run() {
         inputF.setAttribute('value', '');

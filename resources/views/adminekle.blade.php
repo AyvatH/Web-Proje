@@ -74,8 +74,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="register-main">
 				<div class="col-md-6 account-left">
-					<input placeholder="Marka Adı" type="text" tabindex="1" required>
-						<input placeholder="Markanın Türü" type="text" tabindex="2" required>
+					<input placeholder="Marka Adı" type="text" tabindex="1" required> <p></p>
+					<input placeholder="Markanın Türü" type="text" tabindex="2" required>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -87,8 +87,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="register-main">
 				<div class="col-md-6 account-left">
-					<input placeholder="Model Adı" type="text" tabindex="1" required>
-					<input placeholder="Marka Adı" type="text" tabindex="1" required>
+					<input placeholder="Model Adı" type="text" tabindex="1" required><p></p>
+					<input placeholder="Marka Adı" type="text" tabindex="1" required><p></p>
 					<input placeholder="Model Türü" type="text" tabindex="2" required>
 				</div>
 				<div class="clearfix"></div>
@@ -101,10 +101,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="register-main">
 				<div class="col-md-6 account-left">
-					<input placeholder="Ürün Adı" type="text" tabindex="1" required>
-					<input placeholder="Model Adı" type="text" tabindex="1" required>
-					<input placeholder="Marka Adı" type="text" tabindex="1" required>
-						<input placeholder="Ürünün Türü" type="text" tabindex="2" required>
+					<input placeholder="Ürün Adı" type="text" tabindex="1" required><p></p>
+					<input placeholder="Model Adı" type="text" tabindex="1" required><p></p>
+					<input placeholder="Marka Adı" type="text" tabindex="1" required><p></p>
+					<input placeholder="Ürünün Türü" type="text" tabindex="2" required><p></p>
+					<form action="/action_page.php">
+						<input type="file" id="myFile" name="filename"><p></p>
+					</form>
 				</div>
 				<div class="clearfix"></div>
 			</div>

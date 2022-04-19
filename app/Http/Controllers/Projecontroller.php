@@ -48,7 +48,7 @@ class Projecontroller extends Controller
             {// dd($dataa->sifre);
             Session()->put('kull',$dataa);
 
-            return redirect(route("kullanasay"));
+            return redirect()->route('home');
             }
             else
         {
@@ -92,7 +92,7 @@ class Projecontroller extends Controller
           $veri=$id;
           $dataa=Urunler::whereId($veri)->first();
         //   dd($dataa);
-        $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->where("urunler.id",$veri)->
+        $bilgi2=Urunler::join("resimler","resimler.idd","urunler.resim")->where("urunler.id",$veri)->
         get(["resimler.resim1","resimler.resim2","resimler.resim3"]);
        $bilgi=Urunler::get();
           return view('single',compact('dataa','veri',"bilgi2","bilgi"));
@@ -103,11 +103,11 @@ class Projecontroller extends Controller
             // dd($bilgi);
             return view('index',compact('bilgi'));
         }
-        public function liste6()
+        public function liste2()
         {
-            $bilgi2=Urunler::join("resimler","resimler.id","urunler.resim")->get(["ogrenciler.*","resimler.resim1","resimler.resim2","resimler.resim3"]);
-
-            return view('single',compact('bilgi2'));
+            $bilgi=Urunler::get();
+            // dd($bilgi);
+            return view('products',compact('bilgi'));
         }
         public function urunekle(Request $request)
         {
@@ -127,6 +127,45 @@ class Projecontroller extends Controller
         // dd( $dizi1);
         $data["ddd"]=$dizi1;
           return view('checkout',$data);
+
+
+        }
+
+        public function siparisekle(Request $request)
+        {
+            $gel=$request->all();
+
+            $gelen=explode(",",$request->sepet);
+           // dd($gel);
+            $dizi="";
+$sayac=0;
+$sayac1=0;
+$sayac2=0;
+            foreach ($gelen as $key => $value) {
+                if($value=="1"&&$sayac==0){
+                sepet::create
+                (["mus_id"=>"1","urun_id"=>$value,
+                "adet"=>$request->a,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
+                $sayac++;
+            }
+          else  if($value=="2"&&$sayac1==0){
+                sepet::create
+                (["mus_id"=>"1","urun_id"=>$value,
+                "adet"=>$request->b,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
+                $sayac1++;
+            }
+            else  if($value=="3"&&$sayac2==0){
+                sepet::create
+                (["mus_id"=>"1","urun_id"=>$value,
+                "adet"=>$request->c,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
+                $sayac2++;
+            }
+
+            }
+
+
+
+           return back();
 
 
         }

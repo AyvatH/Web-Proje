@@ -23,15 +23,16 @@
 							<h5>İletişim Bilgileri</h5>
 							<p>Tel:1115550001,
 							<span>Fax:190-4509-494</span>
-							Email: <a href="mailto:example@email.com">111111@kocaeli.edu.tr</a></p>
+							Email: </p>
 						</div>
 					</div>
 					<div class="col-md-9 contact-right">
-						<form>
-							<input type="text" placeholder="Ad Soyad">
-							<input type="text" placeholder="Telefon Numarası">
-							<input type="text"  placeholder="Email">
-							<textarea placeholder="Mesajınız" required=""></textarea>
+                        <form id="addCustomer"  class="form-group" method="POST" >
+                            @csrf <!-- {{ csrf_field() }} -->
+							<input type="text" placeholder="Ad Soyad" name="name" id="name"/>
+							<input type="text" placeholder="Telefon Numarası" name="telefon" id="telefon">
+							<input type="text"  placeholder="Email" name="email" id="email">
+							<textarea placeholder="Mesajınız" required="" name="mesaj" id="mesaj"></textarea>
 							<div class="submit-btn">
 								<input type="submit" value="Gönder">
 							</div>

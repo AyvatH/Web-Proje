@@ -59,6 +59,7 @@ Route::get('adminurun',[Projecontroller::class,'liste5'])->name("adminurun")->mi
 Route::get('onayla/{id}',[Projecontroller::class,'guncelle'])->middleware("admin");
 Route::get('sil/{id}',[Projecontroller::class,'sil'])->middleware("admin");
 Route::post('adminurungun',[Projecontroller::class,'guncelled'])->name("guncel")->middleware("admin");
+Route::post('contact',[Projecontroller::class,'gonder']);
 
 
 

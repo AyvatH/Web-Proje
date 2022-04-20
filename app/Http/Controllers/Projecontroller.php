@@ -9,6 +9,7 @@ use App\Models\Resimler;
 use App\Models\sepet;
 use App\Models\Urunler;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 
@@ -339,6 +340,21 @@ $kull=session()->get('kull')->id;
                   "aciklama"=>$request->aciklama]);
                    return redirect()->route('adminanasay');
 
+                  }
+
+                  public function gonder(Request $request)
+                  {
+
+                      $array['email1']=$request->email;
+                      $array['email']="hasan.ayvat4@gmail.com";
+                      $array['name']=$request->name;
+                      $array['telefon']=$request->telefon;
+                      $array['mesaj']=$request->mesaj;
+                      Mail::send('iletisim', $array, function ($message) use ($array) {
+                          $message->subject("İLETİŞİM FORMU");
+                          $message->to($array['email']); });
+
+                            return back();
                   }
 
 }

@@ -304,6 +304,42 @@ $kull=session()->get('kull')->id;
                   return view('adminsip',compact('bilgi2'));
               }
 
+              public function liste5()
+              {
+                  $bilgi2=Urunler::get();
+                  // dd($bilgi);
+                  return view('adminurun',compact('bilgi2'));
+              }
+
+              public function sil($id)
+              {
+                  $veri=$id;
+                  Urunler::whereId($veri)->delete();
+
+              return redirect('adminurun');
+
+                }
+                public function guncelle($id)
+              {
+
+                  $veri=$id;
+                  $dataa=Urunler::whereId($veri)->first();
+
+                  return view('adminurungun',compact('dataa','veri'));
+
+                }
+                public function guncelled(Request $request)
+                {
+                    $fileName = time().'.'.$request->file->extension();
+                    $request->file->move(public_path('images'), $fileName);
+
+                  Urunler::where('id',$request->id)->update(["urun_adi"=>$request->urun_adi, "anaresim"=>"images/".$fileName,"stok"=>$request->stok,
+                  "renk"=>$request->renk,
+                 "fiyat"=>$request->fiyat,
+                  "aciklama"=>$request->aciklama]);
+                   return redirect()->route('adminanasay');
+
+                  }
 
 }
 

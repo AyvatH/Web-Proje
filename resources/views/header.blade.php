@@ -27,7 +27,21 @@
 			<div class="top-header-main">
 				<div class="col-md-6 top-header-left">
 					<div class="drop">
-						<div class="clearfix"></div>
+						<div class="clearfix">
+
+                           <?php $JSON= json_decode(file_get_contents('https://api.genelpara.com/embed/doviz.json'), true);?>
+                            <ul>
+                                <li style="color: white">
+                                    <span>USD</span>
+                                    <span>Fiyat: <?php echo $JSON['USD']['satis']; ?></span>
+                                </li>
+                                <li style="color: white">
+                                    <span>EUR</span>
+                                    <span>Fiyat: <?php echo $JSON['EUR']['satis']; ?></span>
+                                </li>
+
+                            </ul></div>
+
 					</div>
 				</div>
 				<div class="col-md-6 top-header-main">
@@ -164,19 +178,14 @@
 								</div>
 							</div>
 						</li>
-						<li class="grid"><a href="{{route("typo")}}">Blog</a>
-						</li>
+
 						<li class="grid"><a href="{{route("contact")}}">İletişim</a>
 						</li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<div class="col-md-3 header-right">
-				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-				</div>
-			</div>
+
 			</div>
 		</div>
 	</div>

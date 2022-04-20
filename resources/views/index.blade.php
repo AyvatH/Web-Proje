@@ -67,10 +67,10 @@
         <td>{{ $val ['soyad']}}</td>
          <td>{{ $val ["no"]}}</td>
         <td>
-            <a href="{{url("onayla/".$akey)}}" type="submit" class="label theme-bg text-white f-12">Düzenle</a>
+            <a href="{{asset("onayla/".$akey)}}" type="submit" class="label theme-bg text-white f-12">Düzenle</a>
 
          </td>
-         <td>   <a href="{{url("sil/$akey")}}" type="submit" class="label theme-bg2 text-white f-12">Sil</a>
+         <td>   <a href="{{asset("sil/$akey")}}" type="submit" class="label theme-bg2 text-white f-12">Sil</a>
 </td></tr>
 @empty
 <tr>
@@ -89,7 +89,7 @@
                     <input  type="hidden" class="form-control" name="a"  {{ $akey=$val ['id']}} >
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{$val ['anaresim']}}" alt="" /></a>
+							<a href="{{asset("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{$val ['anaresim']}}" alt="" /></a>
 							<div class="product-bottom">
 								<h3>{{  $val ['urun_adi']}}</h3>
 								<p>Explore Now</p>

@@ -50,23 +50,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.easydropdown.js"></script>
 </head>
 <body>
-	<!--top-header-->
-	<div class="top-header">
-		<div class="container">
-			<div class="top-header-main">
-				<div class="col-md-6 top-header-left">
-					<div class="drop">
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<!--top-header-->
+<!--top-header-->
+<div class="top-header">
+    <div class="container">
+        <div class="top-header-main">
+            <div class="col-md-6 top-header-left">
+                <div class="drop">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-md-6 top-header-main">
+
+
+
+<div style="margin-right:50px;" class="cart box_1">
+<p><a href="#">
+    <img src="{{asset('images/arr.png')}}" height="20px" width="20" alt="" />
+</a></p>
+<p><a href="{{route("adminhome")}}"> {{ session()->get('admin')->unvan}}</a></p>
+<p><a href="{{route("admincikis")}}"  > Çıkış Yap</a></p>
+<div class="clearfix"> </div>
+
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--top-header-->
 	<!--start-logo-->
 	<div class="logo">
-        <i ><img src="{{url('images/logo.png')}}" width="75px" height="75px"></i>
+        <i ><img src="{{asset('images/logo.png')}}" width="75px" height="75px"></i>
 		<a href="adminana"><h1>İZMİR SAATLERİ</h1></a>
 	</div>
 	<!--start-logo-->
@@ -82,7 +97,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 						<li class="grid"><a href="adminkul">Kullanıcılar</a>
 						</li>
-						<li class="grid"><a href="adminsip">Siparişler</a>
+					<li class="grid"><a href="adminsip">Siparişler</a>
+						</li>
+                        <li class="grid"><a href="adminurun">Ürünler</a>
 						</li>
 					</ul>
 				</div>
@@ -117,10 +134,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                          <td>{{ $val ["eposta"]}}</td>
                          <td>{{ $val ["tel"]}}</td>
                         <td>
-                            <a href="{{url("onayla/".$akey)}}" type="submit" >Düzenle</a>
+                            <a href="{{asset("onayla/".$akey)}}" type="submit" >Düzenle</a>
 
                          </td>
-                         <td>   <a href="{{url("sil/$akey")}}" type="submit" >Sil</a>
+                         <td>   <a href="{{asset("sil/$akey")}}" type="submit" >Sil</a>
         </td></tr>
         @empty
         <tr>

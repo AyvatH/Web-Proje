@@ -113,12 +113,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <table id="sip">
                 <thead>
                     <tr>
-                        <th>Siparis Veren Adı</th>
-                        <th>Siparis Veren Soyadı</th>
-                        <th>Siparis Verilen Ürün</th>
-                        <th>Siparis Verilen Ürünün Fiyatı</th>
-                        <th>Siparis Verenin Adresi</th>
-                        <th>Siparis Verenin Telefon Numarası</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Resmi</th>
+                        <th>Ürün Stoğu</th>
+                        <th>Ürün Rengi</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ürün Açıklaması</th>
+                        <th>Ürün Düzenle</th>
+                        <th>Ürün Sil</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -127,12 +129,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı">
 
                     <tr>
-                        <td>{{  $val ['ad']}}</td>
-                        <td>{{ $val ['soyad']}}</td>
-                         <td>{{ $val ["urun_adi"]}}</td>
+                        <td>{{  $val ['urun_adi']}}</td>
+                        <td><a href="{{url($val ['anaresim'])}}" type="submit" >Ürün Resim</a></td>
+                         <td>{{ $val ["stok"]}}</td>
+                         <td>{{ $val ["renk"]}}</td>
                          <td>{{ $val ["fiyat"]}}</td>
-                         <td>{{ $val ["adres"]}}</td>
-                         <td>{{ $val ["tel"]}}</td>
+                         <td>{{ $val ["aciklama"]}}</td>
+                         <td>
+                            <a href="{{url("onayla/".$akey)}}" type="submit" >Düzenle</a>
+
+                         </td>
+                         <td>   <a href="{{url("sil/$akey")}}" type="submit">Sil</a>
+        </td>
                  </tr>
         @empty
         <tr>

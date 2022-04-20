@@ -136,7 +136,7 @@
                         <input  type="hidden" class="form-control" name="a"  {{ $akey=$val ['id']}} >
                         <div class="col-md-3 product-left">
                             <div class="product-main simpleCart_shelfItem">
-                                <a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{asset("images/p-1.png")}}" alt="" /></a>
+                                <a href="{{url("single/".$akey)}}" class="mask"><img class="img-responsive zoom-img" src="{{asset($val ['anaresim'])}}" alt="" /></a>
                                 <div class="product-bottom">
                                     <h3>{{  $val ['urun_adi']}}</h3>
                                     <p>Explore Now</p>

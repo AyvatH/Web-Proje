@@ -6,19 +6,19 @@
         border-collapse: collapse;
         width: 100%;
         }
-         
+
         #kul td, #kul th {
         border: 1px solid #ddd;
         padding: 8px;
         }
-         
+
         #kul tr:nth-child(even){background-color: #f2f2f2;}
-         
+
         #kul tr:hover {
         background-color: #2ecc71;
         color:#fff;
         }
-         
+
         #kul th {
         padding-top: 12px;
         padding-bottom: 12px;
@@ -34,22 +34,22 @@
 <script src="js/jquery-1.11.0.min.js"></script>
 <!--Custom-Theme-files-->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
 <script src="js/simpleCart.min.js"> </script>
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script src="js/jquery.easydropdown.js"></script>
 </head>
-<body> 
+<body>
 	<!--top-header-->
 	<div class="top-header">
 		<div class="container">
@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="top-nav">
 					<ul class="memenu skyblue"><li class="active"><a href="adminana">AnaSayfa</a></li>
 						<li class="grid"><a href="adminekle">Ekleme işlemler</a>
-							
+
 						</li>
 						<li class="grid"><a href="adminkul">Kullanıcılar</a>
 						</li>
@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--bottom-header-->
-    
+
         <div class="table-responsive">
             <table  id="kul">
                 <thead>
@@ -102,33 +102,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <th>Kullanıcının SoyAdı</th>
                         <th>Kullanıcının E-postası</th>
                         <th>Kullanıcının Telefon Numarası</th>
-                        <th>Kullanıcının Adresi</th>
+                        <th>Kullanıcı Düzenle</th>
+                        <th>Kullanıcı Sil</th>
                     </tr>
                 </thead>
                 <tbody >
+
+                    @forelse ($bilgi as $key => $val)
+                    <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı">
+
                     <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    
+                        <td>{{  $val ['ad']}}</td>
+                        <td>{{ $val ['soyad']}}</td>
+                         <td>{{ $val ["eposta"]}}</td>
+                         <td>{{ $val ["tel"]}}</td>
+                        <td>
+                            <a href="{{url("onayla/".$akey)}}" type="submit" >Düzenle</a>
+
+                         </td>
+                         <td>   <a href="{{url("sil/$akey")}}" type="submit" >Sil</a>
+        </td></tr>
+        @empty
+        <tr>
+            <td colspan="4">Veri bulunamadı</td>
+        </tr>
+        @endforelse
+
+
         </tbody>
             </table>
         </div>
-    

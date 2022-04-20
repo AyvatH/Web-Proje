@@ -319,6 +319,8 @@ $top1=0;
                                                             $top2=0;
                                                            if(!isset($top3))
                                                             $top3=0;
+                                                            if(!isset($top4))
+                                                            $top4=0;
                                                                 $toplam=$top1+$top2+$top3+$top4;
                                                                 echo $toplam;
                                                             @endphp</td>

@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--bottom-header-->
-	<div class="register">
+
 		<div class="container">
 			<div class="register-top heading">
 				<h2>Ürün Ekleme</h2><br><br>
@@ -81,11 +81,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input placeholder="Ürünün Fiyatı" type="text"  name="fiyat" id="fiyat"><p></p>
                     <input placeholder="Ürünün Aciklamasi" type="text"  name="aciklama" id="aciklama"><p></p>
                     <input type="file" id="file" name="file"  accept=".png,.jpg"><p></p>
+                    <input type="file" id="file1" name="file1"  accept=".png,.jpg"><p></p>
+                    <input type="file" id="file2" name="file2"  accept=".png,.jpg"><p></p>
+                    <input type="file" id="file3" name="file3"  accept=".png,.jpg"><p></p>
                     <div class="submit-btn">
                         <input type="submit" value="Ekle">
                     </div>
                 </form>
-            </div>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 				<div class="clearfix"></div>
 			</div>

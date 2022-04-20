@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Kullanici;
+use App\Models\Resimler;
 use App\Models\sepet;
 use App\Models\Urunler;
 use Illuminate\Support\Facades\DB;
@@ -143,6 +144,7 @@ class Projecontroller extends Controller
 $sayac=0;
 $sayac1=0;
 $sayac2=0;
+$tarih=time();
 if(session()->get('kull')==null)
 $kull=1;
 else
@@ -153,7 +155,7 @@ $kull=session()->get('kull')->id;
                 if($value=="1"&&$sayac==0){
                 sepet::create
                 (["mus_id"=>$kull,"urun_id"=>$value,
-                "adet"=>$request->a,"adres"=>$request->address,"tarih"=>"27.08.2001"]);
+                "adet"=>$request->a,"adres"=>$request->address,"tarih"=>$tarih]);
                 $sayac++;
                 $dataa=Urunler::where("id",$value)->first();
                 $deger=0;
@@ -262,20 +264,44 @@ $kull=session()->get('kull')->id;
               {
                 $request->validate([
                     'file' => 'required|max:2048'],
-                    ['file.required'=>'Fotoğraf eksik.'
-
-                ]);
-                $id=rand(10,100);
+                    ['file.required'=>'Fotoğraf eksik.' ]);
+                $id=rand(10,1000);
+                $idd=rand(10,1000);
                 $fileName = time().'.'.$request->file->extension();
+                $fileName1 = time().'.'.$request->file1->extension();
+                $fileName2 = time().'.'.$request->file2->extension();
+                $fileName3 = time().'.'.$request->file3->extension();
+
                // dd($fileName);
                 $request->file->move(public_path('images'), $fileName);
+                $request->file1->move(public_path('images'), $fileName1);
+                $request->file2->move(public_path('images'), $fileName2);
+                $request->file3->move(public_path('images'), $fileName3);
+                //dd($idd);
+                Resimler::create
+                (["idd"=>"$idd","resim1"=>"images/".$fileName1,"resim2"=>"images/".$fileName2,"resim3"=>"images/".$fileName3]);
+
                   Urunler::create
                   (["id"=>"$id","urun_adi"=>$request->urun_adi,"stok"=>$request->stok,"renk"=>$request->renk,"fiyat"=>$request->fiyat,"aciklama"=>$request->aciklama,
-                  "anaresim"=>"images/".$fileName]);
+                  "anaresim"=>"images/".$fileName,"resim"=>$idd]);
 
                  return redirect('adminekle');
 
 
+              }
+              public function liste3()
+              {
+                  $bilgi=Kullanici::get();
+                  // dd($bilgi);
+                  return view('adminkul',compact('bilgi'));
+              }
+              public function liste4()
+              {
+            $bilgi2=sepet:: join("kullanici","kullanici.id","sepet.mus_id")->
+            join("urunler","sepet.urun_id","urunler.id")->
+            get(["sepet.*","kullanici.*","urunler.*"]);
+             //  dd($bilgi2);
+                  return view('adminsip',compact('bilgi2'));
               }
 
 

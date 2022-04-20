@@ -52,5 +52,8 @@ Route::get('adminana', [Projecontroller::class, 'adminanasayfa'])->name("adminan
 Route::get('admincikis',[Projecontroller::class,'admincikis'])->name("admincikis");
 
 Route::post('adminekle',[Projecontroller::class,'uruneklee']);
+Route::get('adminkul',[Projecontroller::class,'liste3'])->name("adminkul");
+Route::get('adminsip',[Projecontroller::class,'liste4'])->name("adminsip");
+
 
 

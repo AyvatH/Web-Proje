@@ -23,15 +23,16 @@
 							<h5>İletişim Bilgileri</h5>
 							<p>Tel:1115550001,
 							<span>Fax:190-4509-494</span>
-							Email: <a href="mailto:example@email.com">111111@kocaeli.edu.tr</a></p>
+							Email: </p>
 						</div>
 					</div>
 					<div class="col-md-9 contact-right">
-						<form>
-							<input type="text" placeholder="Ad Soyad">
-							<input type="text" placeholder="Telefon Numarası">
-							<input type="text"  placeholder="Email">
-							<textarea placeholder="Mesajınız" required=""></textarea>
+                        <form id="addCustomer"  class="form-group" method="POST" >
+                            @csrf <!-- {{ csrf_field() }} -->
+							<input type="text" placeholder="Ad Soyad" name="name" id="name"/>
+							<input type="text" placeholder="Telefon Numarası" name="telefon" id="telefon">
+							<input type="text"  placeholder="Email" name="email" id="email">
+							<textarea placeholder="Mesajınız" required="" name="mesaj" id="mesaj"></textarea>
 							<div class="submit-btn">
 								<input type="submit" value="Gönder">
 							</div>
@@ -44,7 +45,7 @@
 	<!--contact-end-->
 	<!--map-start-->
 	<div class="map">
-		<iframe src="https://www.google.com/maps/place/Kocaeli+University/@40.8221732,29.9216517,15z/data=!4m2!3m1!1s0x0:0xc81fa849234e8755?sa=X&ved=2ahUKEwj5-4rfmI_3AhXTR_EDHZzlBZwQ_BJ6BAhXEAU" style="border:0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12077.054428104966!2d29.9216517!3d40.8221732!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc81fa849234e8755!2sKocaeli%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1650485791347!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
 	<!--map-end-->
 

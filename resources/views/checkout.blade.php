@@ -214,9 +214,10 @@
                                                             @forelse ($ddd as $key => $val2)
                                                             {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
                                                             @php
-                                                            $sayac1="";
-                                                            $sayac2="";
-                                                            $sayac3="";
+                                                            $sayac1=0;
+                                                            $sayac2=0;
+                                                            $sayac3=0;
+                                                            $sayac4=0;
                                                             foreach ($ddd as $dg) {
 
                                                                 if($dg=="1")
@@ -225,6 +226,8 @@
                                                                 $sayac2++;
                                                                else if($dg=="3")
                                                                 $sayac3++;
+                                                                else if($dg=="11")
+                                                                $sayac4++;
                                                             }
                                                            // dd( $ddd);
 
@@ -246,10 +249,11 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody >
-                                                                    <form id="addCustomer"  class="form-group" method="POST" >
+                                                                    <form id="sepetekle"  class="form-group" method="POST" >
                                                                         @csrf <!-- {{ csrf_field() }} -->
 
                                                                     @forelse ($dz as $key => $val)
+
                                                                     <input type="hidden" value="{{$val->id}}" name="id{{$key}}"/>
                                                                     {{-- <input  type="hidden" class="form-control" name="kadd"  {{ $akey=$val ['id']}} placeholder="Kullanıcı Adı"> --}}
 
@@ -272,13 +276,20 @@ $top1=0;
                                                                            $top2=$sayac2*$val->fiyat;
 //dd($top2);
                                                                            @endphp
-                                                                           @else
+                                                                           @elseif($val->id=="3")
                                                                            @php
                                                                             $top3=0;
                                                                             echo $sayac3;
                                                                            $top3=$sayac3*$val->fiyat;
 //dd($top1);
                                                                            @endphp
+                                                                            @else
+                                                                            @php
+                                                                             $top4=0;
+                                                                             echo $sayac4;
+                                                                            $top4=$sayac4*$val->fiyat;
+ //dd($top1);
+                                                                            @endphp
                                                                            @endif
                                                                         </td>
                                                                         <td> {{$val->fiyat}}</td>
@@ -308,7 +319,9 @@ $top1=0;
                                                             $top2=0;
                                                            if(!isset($top3))
                                                             $top3=0;
-                                                                $toplam=$top1+$top2+$top3;
+                                                            if(!isset($top4))
+                                                            $top4=0;
+                                                                $toplam=$top1+$top2+$top3+$top4;
                                                                 echo $toplam;
                                                             @endphp</td>
                                                         </tr>
@@ -420,11 +433,11 @@ $top1=0;
                                                                         <input  type="hidden" class="form-control" name="c" id="c" value="{{$sayac3}}">
                                                                         <input  type="hidden" class="form-control" name="d"  id="d" value="{{$toplam}}">
 
-                                                <button type="submit" class="list-group mt-5 p-0 justify-content-center" >
+                                                <div  class="list-group mt-5 p-0 justify-content-center" >
                                                     <a href="#step2" onclick="gfg_Run()" class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
                                                         Next <i class="fal fa-arrow-circle-right"></i>
                                                     </a>
-                                                </button>
+                                                </div>
                                             </form>
                                             </div>
                                         </div>
@@ -665,7 +678,7 @@ $top1=0;
                                     </div>
                                 </div>
                                 <div class="list-group mt-5 p-0 mb-3 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
-                                    <a href="{{route("home")}}" class="list-group-item-dark ml-3 w-35 py-2  rounded text-center btns home" >
+                                    <a href="javascript:void()" onclick="sepet()" class="list-group-item-dark ml-3 w-35 py-2 simpleCart_empty  rounded text-center btns home" >
                                         <i class="fas fa-home"></i> Back
                                     </a>
                                 </div>
@@ -757,6 +770,14 @@ $top1=0;
     var inputa= document.getElementById("email");
     var inputb= document.getElementById("tel");
     var inputc = document.getElementById("address");
+
+    function sepet() {
+    document.getElementById("sepetekle").submit();
+    localStorage.removeItem("spt");
+            console.log("asd");
+            var sepet=document.getElementById('sepet');
+        sepet.value=null;
+    }
 
     function gfg_Run() {
         inputF.setAttribute('value', '');

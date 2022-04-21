@@ -42,27 +42,24 @@
                     </tr>
                 </thead>
                 <tbody >
+
+                    @forelse ($bilgi2 as $key2 => $val2)
+                    <input  type="hidden" class="form-control" name="kad"  {{ $akey2=$val2 ['id']}} placeholder="Kullanıcı Adı">
+
                     <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
-                    <tr>
-                        <td>Görken</td>
-                        <td>İzmir</td>
-                        <td>grknizmir.tr</td>
-                        <td>5311111111</td>
-                        <td>Bağrıyanık mahallesi</td>
-                    </tr>
+                        <td>{{  session()->get('kull')->ad}}</td>
+                        <td>{{ session()->get('kull')->soyad }}</td>
+                        <td>{{ $val2 ["urun_adi"]}}</td>
+                         <td>{{ $val2 ["adet"]}}</td>
+                         <td>{{ $val2 ["fiyat"]}}</td>
+                         <td>{{ $val2 ["adres"]}}</td>
+                      </tr>
+        @empty
+        <tr>
+            <td colspan="4">Veri bulunamadı</td>
+        </tr>
+        @endforelse
+
 
         </tbody>
             </table>

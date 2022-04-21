@@ -9,6 +9,6 @@ class Resimler extends Model
 {
     use HasFactory;
     protected $table="resimler";
-    protected $fillable=["id" ,"resim1","resim2","resim3"];
+    protected $fillable=["idd" ,"resim1","resim2","resim3"];
     public $timestamps = false;
 }

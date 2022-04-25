@@ -1,3 +1,25 @@
+
+<b>Kullanici Anasayfa</b>
+![Screenshot_1](https://user-images.githubusercontent.com/56755486/165002469-58335b5b-ef6a-43e3-856d-62e4c1d56676.png)
+<b>Kullanici Giriş</b>
+![Screenshot_2](https://user-images.githubusercontent.com/56755486/165002500-ff81dff3-2956-4f76-a78e-217ff7dae2e6.png)
+<b>Kullanici Kayit ol   </b>
+![Screenshot_3](https://user-images.githubusercontent.com/56755486/165002506-40e2c543-3a92-458b-bacf-78df5d2c8c6a.png)
+<b>Kullanici Ürün Detay</b>
+![Screenshot_4](https://user-images.githubusercontent.com/56755486/165002507-18e3b772-4be4-4276-843f-d09aafb88fd9.png)
+<b>Kullanici İletişim</b>
+![Screenshot_5](https://user-images.githubusercontent.com/56755486/165002598-1aacbc69-52f0-4e6b-a387-a4baffe91e38.png)
+<b>Kullanici Sepet</b>
+[Screenshot_6](https://user-images.githubusercontent.com/56755486/165002512-2ceacd7d-cedd-4c9b-ab14-09653ee86e79.png)
+<b>Admin Ürün Ekle</b>
+[Screenshot_7](https://user-images.githubusercontent.com/56755486/165002519-553fcc20-5a25-4f2b-a435-fedb4ec76adc.png)
+<b>Admin Kullanici</b>
+[Screenshot_8](https://user-images.githubusercontent.com/56755486/165002521-5e0db924-cb3c-428d-b70a-c46a09998ac7.png)
+<b>Admin Sipariş</b>
+![Screenshot_9](https://user-images.githubusercontent.com/56755486/165002526-460c9aa2-7eac-4917-b780-4a447faa7f09.png)
+<b>Admin Ürünler</b>
+![Screenshot_10](https://user-images.githubusercontent.com/56755486/165002531-131ff764-5a09-4c25-b949-ebb8c46047a6.png)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
